@@ -1,0 +1,25 @@
+# Install dependencies
+pip install -r requirements.txt
+
+# Store memory
+python -m app.cli --message "I work at Nagarro"
+
+# Ask contextual question
+python -m app.cli --message "Where do I work?"
+
+# Inspect memory
+python -m app.cli --inspect "work"
+
+# Clear memory
+python -m app.cli --clear
+
+# Run API
+uvicorn app.main:app --reload
+
+# Open Swagger UI
+http://127.0.0.1:8000/docs
+
+# Chat API
+curl -X POST "http://127.0.0.1:8000/chat" \
+-H "Content-Type: application/json" \
+-d '{"message":"I work at Nagarro"}'

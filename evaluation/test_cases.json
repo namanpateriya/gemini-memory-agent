@@ -1,0 +1,10 @@
+[
+  {
+    "memory": "I live in Pune.",
+    "query": "Where do I live?"
+  },
+  {
+    "memory": "I like football.",
+    "query": "What sport do I like?"
+  }
+]

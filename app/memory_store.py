@@ -29,6 +29,7 @@ class MemoryStore:
 
         self.memories.append(text)
 
+        # keep bounded memory
         if len(self.memories) > MEMORY_LIMIT:
             self.memories = self.memories[-MEMORY_LIMIT:]
 
@@ -48,4 +49,13 @@ class MemoryStore:
         results = []
 
         for idx in indices[0]:
+            if 0 <= idx < len(self.memories):
+                results.append(self.memories[idx])
+
+        return results
+
+    def clear(self):
+        self.index = None
+        self.memories = []
+
         logger.info("Memory cleared")

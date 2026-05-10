@@ -56,4 +56,13 @@ Answer conversationally while using relevant memories where useful.
             "status": "success",
             "message": "memory cleared"
         }
+
+    @staticmethod
+    def inspect_memory(query: str):
+        results = memory_store.search(query)
+
+        return {
+            "status": "success",
+            "query": query,
+            "memories": results
         }

@@ -9,14 +9,23 @@ logger = get_logger(__name__)
 class GeminiClient:
 
     def __init__(self):
+        self.model = None
+
         if not GEMINI_API_KEY:
-            raise ValueError("Missing GEMINI_API_KEY")
+            logger.warning("Missing GEMINI_API_KEY")
+            return
 
-        genai.configure(api_key=GEMINI_API_KEY)
+        try:
+            genai.configure(api_key=GEMINI_API_KEY)
+            self.model = genai.GenerativeModel(MODEL_NAME)
 
-        self.model = genai.GenerativeModel(MODEL_NAME)
+        except Exception as e:
+            logger.error(f"Gemini initialization failed: {e}")
 
     def generate(self, prompt: str):
+        if self.model is None:
+            return "error: Gemini model not initialized"
+
         try:
             response = self.model.generate_content(prompt)
 

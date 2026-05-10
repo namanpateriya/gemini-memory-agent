@@ -1,10 +1,12 @@
 [
   {
     "memory": "I live in Pune.",
-    "query": "Where do I live?"
+    "query": "Where do I live?",
+    "expected_keyword": "Pune"
   },
   {
     "memory": "I like football.",
-    "query": "What sport do I like?"
+    "query": "What sport do I like?",
+    "expected_keyword": "football"
   }
 ]
